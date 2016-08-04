@@ -25,8 +25,8 @@ public class UserListServlet extends HttpServlet {
         out.println("<html>");
         out.println("<title>Users</title>");
         out.println("<body>");
-        out.println("<h3>" + "USERS" + "</h3>");
-        out.println("<table border=\"1\">");
+        out.println("<h3>" + "ALL USERS" + "</h3>");
+        out.println("<table border=\"2\">");
         out.println("<tr><th>ID</th><th>Name</th><th>Login</th><th>Age</th></tr>");
         for (UserDto userDto:listUsers) {
             out.print("<tr>");
