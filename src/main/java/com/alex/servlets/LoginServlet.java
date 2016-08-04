@@ -1,6 +1,6 @@
 package com.alex.servlets;
 
-import com.alex.entity.User;
+
 import com.alex.service.api.UserService;
 import com.alex.service.impl.UserServiceImpl;
 

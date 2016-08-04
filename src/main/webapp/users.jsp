@@ -2,7 +2,7 @@
 <%@ page import="com.alex.service.impl.UserServiceImpl" %>
 <%@ page import="com.alex.dto.UserDto" %>
 <%@ page import="java.util.List" %>
-<%@ page import="java.io.PrintWriter" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: Алексей
   Date: 04.08.2016
