@@ -34,7 +34,7 @@
     %>
     <tr>
         <td>
-            <%=userDto.getId()%>
+            <a href="userinfo.jsp?id=<%=userDto.getId()%>"><%=userDto.getId()%></a>
         </td>
         <td>
             <%=userDto.getName()%>
