@@ -13,14 +13,15 @@
     <title>User profile</title>
 </head>
 <body>
-
-    <%
-        long id = Long.parseLong(request.getParameter("id"));
-        UserService userService = UserServiceImpl.getInstance();
-        UserDto userDto = userService.getUserById(id);
-    %>
-    User #<%=id%>: <%=userDto.getLogin()%> <br>
-    Name: <%=userDto.getName()%> <br>
-    Age: <%=userDto.getAge()%> <br>
+<a href="index.html">Main page</a>
+<h3>User profile</h3>
+<%
+    long id = Long.parseLong(request.getParameter("id"));
+    UserService userService = UserServiceImpl.getInstance();
+    UserDto userDto = userService.getUserById(id);
+%>
+User #<%=id%>: <%=userDto.getLogin()%> <br>
+Name: <%=userDto.getName()%> <br>
+Age: <%=userDto.getAge()%> <br>
 </body>
 </html>
