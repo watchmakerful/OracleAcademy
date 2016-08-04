@@ -22,7 +22,7 @@
     List<UserDto> listUsers = userService.getAllUsers();
 
 %>
-<table border="2">
+<table border="1">
     <tr>
         <th>ID</th>
         <th>Name</th>
@@ -32,17 +32,20 @@
     <%
         for (UserDto userDto : listUsers) {
     %>
-            <tr>
-            <td>
+    <tr>
+        <td>
             <%=userDto.getId()%>
-            </td><td>
+        </td>
+        <td>
             <%=userDto.getName()%>
-            </td><td>
+        </td>
+        <td>
             <%=userDto.getLogin()%>
-            </td><td>
+        </td>
+        <td>
             <%=userDto.getAge()%>
-            </td>
-            </tr>
+        </td>
+    </tr>
     <%
         }
     %>
