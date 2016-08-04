@@ -17,7 +17,7 @@ public class Transformer {
         userDto.setName(user.getName());
         userDto.setAge(user.getAge());
         userDto.setLogin(user.getLogin());
-        userDto.setPassword(user.getPassword()); //// TODO: 24.07.2016 remove?
+        //userDto.setPassword(user.getPassword()); //// TODO: 24.07.2016 remove ?
         userDto.setEmail(user.getEmail());
         userDto.setSecondName(user.getSecondName());
         userDto.setRole(user.getRole());
