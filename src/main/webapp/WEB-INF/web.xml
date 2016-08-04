@@ -27,5 +27,13 @@
         <url-pattern>/register</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>list_users</servlet-name>
+        <servlet-class>com.alex.servlets.UserListServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>list_users</servlet-name>
+        <url-pattern>/users</url-pattern>
+    </servlet-mapping>
 
 </web-app>
