@@ -23,7 +23,6 @@ public class LoginServlet extends HttpServlet {
         out.println("<html>");
         out.println("<body>");
         out.println("<h3>" + username + "</h3>");
-        out.println("<h3>" + password + "</h3>");
         if (userService.checkUserExists(username,password)) {
             out.println("Login successful!");
         }
