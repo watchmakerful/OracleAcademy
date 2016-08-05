@@ -25,7 +25,7 @@ public class LoginServlet extends HttpServlet {
         out.println("<html>");
         out.println("<body>");
         out.println("<h3>" + username + "</h3>");
-        if (userService.checkUserExists(username,password)) {
+        if (userService.checkUserExists(username, password)) {
             out.println("Login successful!");
 
 
@@ -35,8 +35,7 @@ public class LoginServlet extends HttpServlet {
             out.println("<meta http-equiv=\"refresh\" content=\"3;index.jsp\">");
 
 
-        }
-        else {
+        } else {
             if (userService.checkUserExists(username)) {
                 out.println("Incorrect password, try again!");
             } else
@@ -44,21 +43,13 @@ public class LoginServlet extends HttpServlet {
             session.removeAttribute("user");
             out.println("<a href=login>Try again</a>");
             out.println("<meta http-equiv=\"refresh\" content=\"3;login\">");
-
-
-
-
-
-
-
         }
         out.println("</body>");
         out.println("</html>");
 
 
-
-
     }
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.sendRedirect("/login.html");
     }
