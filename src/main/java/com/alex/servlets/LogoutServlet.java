@@ -21,6 +21,7 @@ public class LogoutServlet extends HttpServlet {
         out.println("<body>");
         out.println("You have been successfully logged out.");
         out.println("<a href=index.jsp>Main page</a>");
+        out.println("<meta http-equiv=\"refresh\" content=\"3;index.jsp\">");
         out.println("</body>");
         out.println("</html>");
     }
