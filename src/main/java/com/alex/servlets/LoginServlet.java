@@ -32,7 +32,7 @@ public class LoginServlet extends HttpServlet {
             session.setAttribute("user", username);
 
             out.println("<a href=index.jsp>Return to main page</a>");
-
+            out.println("<meta http-equiv=\"refresh\" content=\"3;index.jsp\">");
 
 
         }
@@ -43,6 +43,7 @@ public class LoginServlet extends HttpServlet {
                 out.println("Unknown user!");
             session.removeAttribute("user");
             out.println("<a href=login>Try again</a>");
+            out.println("<meta http-equiv=\"refresh\" content=\"3;login\">");
 
 
 
