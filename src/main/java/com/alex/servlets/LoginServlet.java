@@ -20,7 +20,7 @@ public class LoginServlet extends HttpServlet {
         UserService userService = UserServiceImpl.getInstance();
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-
+        HttpSession session = request.getSession();
         PrintWriter out = response.getWriter();
         out.println("<html>");
         out.println("<body>");
@@ -28,7 +28,7 @@ public class LoginServlet extends HttpServlet {
         if (userService.checkUserExists(username,password)) {
             out.println("Login successful!");
 
-            HttpSession session = request.getSession();
+
             session.setAttribute("user", username);
 
             out.println("<a href=index.jsp>Return to main page</a>");
@@ -41,6 +41,7 @@ public class LoginServlet extends HttpServlet {
                 out.println("Incorrect password, try again!");
             } else
                 out.println("Unknown user!");
+            session.removeAttribute("user");
             out.println("<a href=login>Try again</a>");
 
 
