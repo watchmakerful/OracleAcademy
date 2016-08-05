@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -19,22 +20,39 @@ public class LoginServlet extends HttpServlet {
         UserService userService = UserServiceImpl.getInstance();
         String username = request.getParameter("username");
         String password = request.getParameter("password");
+
         PrintWriter out = response.getWriter();
         out.println("<html>");
         out.println("<body>");
         out.println("<h3>" + username + "</h3>");
         if (userService.checkUserExists(username,password)) {
             out.println("Login successful!");
-        }
-        else
-        if (userService.checkUserExists(username)) {
-            out.println("Incorrect password, try again!");
-        }
-        else
-            out.println("Unknown user!");
 
+            HttpSession session = request.getSession();
+            session.setAttribute("user", username);
+
+            out.println("<a href=index.jsp>Return to main page</a>");
+
+
+
+        }
+        else {
+            if (userService.checkUserExists(username)) {
+                out.println("Incorrect password, try again!");
+            } else
+                out.println("Unknown user!");
+            out.println("<a href=login>Try again</a>");
+
+
+
+
+
+
+
+        }
         out.println("</body>");
         out.println("</html>");
+
 
 
 

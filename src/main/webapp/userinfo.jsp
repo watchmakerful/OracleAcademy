@@ -13,7 +13,7 @@
     <title>User profile</title>
 </head>
 <body>
-<a href="index.html">Main page</a>
+<a href="index.jsp">Main page</a>
 <h3>User profile</h3>
 <%
     long id = Long.parseLong(request.getParameter("id"));

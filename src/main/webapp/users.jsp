@@ -15,7 +15,7 @@
     <title>All users</title>
 </head>
 <body>
-<a href="index.html">Main page</a>
+<a href="index.jsp">Main page</a>
 <h3>ALL USERS</h3>
 <%
     UserService userService = UserServiceImpl.getInstance();
