@@ -23,8 +23,9 @@
 %>
 <a href="/login.html">Login</a>
 <% }; %>
-<br>
-<a href="/registration.html">Register new user</a> <br>
-<a href="/users.jsp">All users</a>
+<br/>
+<a href="/registration.html">Register new user</a> <br/>
+<a href="/users.jsp">All users</a><br/>
+<a href="newproduct.html">New product</a>
 </body>
 </html>
