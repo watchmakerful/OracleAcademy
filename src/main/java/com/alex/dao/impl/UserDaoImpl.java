@@ -2,6 +2,7 @@ package com.alex.dao.impl;
 
 import com.alex.dao.api.UserDao;
 import com.alex.dbutil.DataSource;
+import com.alex.entity.Product;
 import com.alex.entity.Role;
 import com.alex.entity.User;
 
@@ -16,11 +17,13 @@ import java.util.List;
  * Created by root on 14.07.2016.
  */
 public class UserDaoImpl implements UserDao {
-    private static final String SELECT_ALL_USERS = "select * from users";
-    private static final String SELECT_USER_BY_ID = "select * from users where id = ?";
-    private static final String DELETE_USER = "delete from users where id = ?";
-    private static final String CREATE_NEW_USER = "insert into users (id, name, name2, age, login, password, email, address, role) values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
+    private static final String SELECT_ALL_USERS = "SELECT * FROM users";
+    private static final String SELECT_USER_BY_ID = "SELECT * FROM users WHERE id = ?";
+    private static final String DELETE_USER = "DELETE FROM users WHERE id = ?";
+    private static final String CREATE_NEW_USER = "INSERT INTO users (id, name, name2, age, login, password, email, address, role) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    private static final String GET_CART_BY_ID = "SELECT * FROM carts INNER JOIN products ON carts.productid = products.id WHERE userid = ?";
+    private static final String ADD_PRODUCT_TO_CART = "INSERT INTO carts (userid, productid) VALUES (?, ?)";
+    private static final String REMOVE_PRODUCT_FROM_CART = "DELETE FROM carts WHERE userid = ? AND productid = ?";
 
     private UserDaoImpl() {
         dataSource = DataSource.getInstance();
@@ -160,6 +163,89 @@ public class UserDaoImpl implements UserDao {
             ps.setString(9, user.getRole().toString());
 
 
+            ps.executeUpdate();
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (connection != null)
+                    connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @Override
+    public List<Product> getCart(long id) {
+        Connection connection = dataSource.getConnection();
+        List<Product> cart = new LinkedList<>();
+        try {
+            PreparedStatement ps = connection.prepareStatement(GET_CART_BY_ID);
+            ps.setLong(1, id);
+            ResultSet resultSet = ps.executeQuery();
+
+            while (resultSet.next()) {
+                Product product = new Product();
+                product.setId(resultSet.getLong("productid"));
+                product.setName(resultSet.getString("name"));
+                product.setCount(resultSet.getInt("count"));
+                product.setDescription(resultSet.getString("description"));
+                product.setMade(resultSet.getString("made"));
+                product.setPrice(resultSet.getDouble("price"));
+                cart.add(product);
+
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (connection != null)
+                    connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+
+        return cart;
+    }
+
+    @Override
+    public void addProductToCart(long id, long productId) {
+        Connection connection = dataSource.getConnection();
+
+        try {
+            PreparedStatement ps = connection.prepareStatement(ADD_PRODUCT_TO_CART);
+            ps.setLong(1, id);
+            ps.setLong(2, productId);
+            ps.executeUpdate();
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (connection != null)
+                    connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @Override
+    public void removeProductFromCart(long id, long productId) {
+        Connection connection = dataSource.getConnection();
+
+        try {
+            PreparedStatement ps = connection.prepareStatement(REMOVE_PRODUCT_FROM_CART);
+            ps.setLong(1, id);
+            ps.setLong(2, productId);
             ps.executeUpdate();
 
 

@@ -23,7 +23,7 @@ public class UserDto {
     private String password;
     private String address;
     private Role role;
-    private List<Product> products = new ArrayList<>();
+//    private List<Product> products = new ArrayList<>();
 
     public long getId() {
         return id;
@@ -98,13 +98,13 @@ public class UserDto {
         this.role = role;
     }
 
-    public List<Product> getProducts() {
-        return products;
-    }
-
-    public void setProducts(List<Product> products) {
-        this.products = products;
-    } //// TODO: 24.07.2016 necessary?
+//    public List<Product> getProducts() {
+//        return products;
+//    }
+//
+//    public void setProducts(List<Product> products) {
+//        this.products = products;
+//    } //// TODO: 24.07.2016 necessary?
 
     @Override
     public String toString() {

@@ -1,5 +1,6 @@
 package com.alex.dao.api;
 
+import com.alex.entity.Product;
 import com.alex.entity.User;
 
 import java.util.List;
@@ -12,6 +13,8 @@ public interface UserDao {
     User findById (long id);
     void delete (long id);
     void create (User user);
-
+    List<Product> getCart (long id); //?
+    void addProductToCart (long id, long productId);
+    void removeProductFromCart (long id, long productId);
 
 }

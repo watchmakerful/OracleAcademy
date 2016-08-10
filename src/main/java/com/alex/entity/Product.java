@@ -58,4 +58,16 @@ public class Product {
     public void setMade(String made) {
         this.made = made;
     }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", count=" + count +
+                ", price=" + price +
+                ", made='" + made + '\'' +
+                '}';
+    }
 }
