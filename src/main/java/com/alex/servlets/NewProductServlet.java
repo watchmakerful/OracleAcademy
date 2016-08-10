@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 /**
  * Created by Алексей on 09.08.2016.
@@ -32,8 +33,18 @@ public class NewProductServlet extends HttpServlet {
         productDto.setPrice(price);
         productDto.setMade(made);
         productService.createProduct(productDto);
+        PrintWriter out = response.getWriter();
 
-        response.sendRedirect("/index.jsp");
+        out.println("<html>");
+        out.println("<body>");
+        out.println("<h3> Product created successfully. </h3>");
+        out.println("<meta http-equiv=\"refresh\" content=\"3;index.jsp\">");
+        out.println("</body>");
+        out.println("</html>");
+
+
+
+
 
 
 
