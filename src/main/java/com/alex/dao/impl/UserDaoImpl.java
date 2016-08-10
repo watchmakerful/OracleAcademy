@@ -216,12 +216,12 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public void addProductToCart(long id, long productId) {
+    public void addProductToCart(long userId, long productId) {
         Connection connection = dataSource.getConnection();
 
         try {
             PreparedStatement ps = connection.prepareStatement(ADD_PRODUCT_TO_CART);
-            ps.setLong(1, id);
+            ps.setLong(1, userId);
             ps.setLong(2, productId);
             ps.executeUpdate();
 
@@ -239,12 +239,12 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public void removeProductFromCart(long id, long productId) {
+    public void removeProductFromCart(long userId, long productId) {
         Connection connection = dataSource.getConnection();
 
         try {
             PreparedStatement ps = connection.prepareStatement(REMOVE_PRODUCT_FROM_CART);
-            ps.setLong(1, id);
+            ps.setLong(1, userId);
             ps.setLong(2, productId);
             ps.executeUpdate();
 

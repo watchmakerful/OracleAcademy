@@ -1,5 +1,6 @@
 package com.alex.service.impl;
 
+import com.alex.dto.ProductDto;
 import com.alex.utils.Transformer;
 import com.alex.dao.api.UserDao;
 import com.alex.dao.impl.UserDaoImpl;
@@ -58,9 +59,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean deleteUser(long id) {
+    public void deleteUser(long id) {
         userDao.delete(id);
-        return true;  //// TODO: 21.07.2016 in UserDao
+
     }
 
     @Override
@@ -78,5 +79,21 @@ public class UserServiceImpl implements UserService {
             if (user.getLogin().equals(login)) return true;
         }
         return false;
+    }
+
+    @Override
+    public List<ProductDto> getCartById(long id) {
+        List<ProductDto> cartProductDtos = Transformer.transformListProductToListProductDto(userDao.getCart(id));
+        return cartProductDtos;
+    }
+
+    @Override
+    public void addProductToCart(long userId, long productId) {
+        userDao.addProductToCart(userId,productId);
+    }
+
+    @Override
+    public void removeProductFromCart(long userId, long productId) {
+        userDao.removeProductFromCart(userId,productId);
     }
 }

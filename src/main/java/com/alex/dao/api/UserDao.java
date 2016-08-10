@@ -14,7 +14,7 @@ public interface UserDao {
     void delete (long id);
     void create (User user);
     List<Product> getCart (long id); //?
-    void addProductToCart (long id, long productId);
-    void removeProductFromCart (long id, long productId);
+    void addProductToCart (long userId, long productId);
+    void removeProductFromCart (long userId, long productId);
 
 }
