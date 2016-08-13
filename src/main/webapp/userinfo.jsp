@@ -55,13 +55,10 @@ Cart: <br/>
         </td>
         <td>
             <%
-            if (id == (Long) session.getAttribute("user")) {
-
-
+                if (id == (Long) session.getAttribute("user")) {
             %>
             <a href="removeproduct?productid=<%=productDto.getId()%>">X</a>
             <%
-
                 }
             %>
         </td>

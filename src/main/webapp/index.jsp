@@ -16,16 +16,17 @@
 <%
     String username = "";
     Long sessionUser = (Long) request.getSession().getAttribute("user");
-    if (!(sessionUser == null )){
-        username = (String)request.getSession().getAttribute("username");
+    if (!(sessionUser == null)) {
+        username = (String) request.getSession().getAttribute("username");
 %>
-    Hello, <a href="userinfo.jsp"><%=username%></a>! <a href="logout">(logout)</a>
-<%}
-    else
-{
+Hello, <a href="userinfo.jsp"><%=username%>
+</a>! <a href="logout">(logout)</a>
+<%
+} else {
 %>
 <a href="/login.html">Login</a>
-<% }; %>
+<% }
+    ; %>
 <br/>
 <a href="/registration.html">Register new user</a> <br/>
 <a href="/users.jsp">All users</a><br/>
