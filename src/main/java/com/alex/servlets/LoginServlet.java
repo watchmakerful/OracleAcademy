@@ -24,11 +24,12 @@ public class LoginServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         out.println("<html>");
         out.println("<body>");
-        out.println("<h3>" + username + "</h3>");
+
         long userId = userService.checkUserExists(username, password);
 
 
         if (userId!=-1) {
+            out.println("<h3>" + username + "</h3>");
             out.println("Login successful!");
 
 

@@ -27,6 +27,7 @@
             <th>Name</th>
             <th>Price</th>
             <th>Count</th>
+            <th></th>
         </tr>
         <%
             for (ProductDto productDto : listProducts) {
@@ -44,6 +45,9 @@
             </td>
             <td>
                 <%=productDto.getCount()%>
+            </td>
+            <td>
+                <a href="addproduct?productid=<%=productDto.getId()%>">Add</a>
             </td>
 
         </tr>

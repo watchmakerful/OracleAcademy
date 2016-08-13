@@ -54,5 +54,14 @@
         <url-pattern>/addproduct</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>removeproduct</servlet-name>
+        <servlet-class>com.alex.servlets.RemoveProductFromCartServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>removeproduct</servlet-name>
+        <url-pattern>/removeproduct</url-pattern>
+    </servlet-mapping>
+
 
 </web-app>

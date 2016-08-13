@@ -18,7 +18,15 @@
 <a href="index.jsp">Main page</a>
 <h3>User profile</h3>
 <%
-    long id = Long.parseLong(request.getParameter("id"));
+    long id = 0;
+    if ((request.getParameter("id")) != null) {
+        id = Long.parseLong(request.getParameter("id"));
+    } else if (session.getAttribute("user") != null) {
+        id = (Long) session.getAttribute("user");
+    } else
+        response.sendRedirect("/login.html");
+
+
     UserService userService = UserServiceImpl.getInstance();
     UserDto userDto = userService.getUserById(id);
     List<ProductDto> cart = userService.getCartById(id);
@@ -32,6 +40,7 @@ Cart: <br/>
     <tr>
         <th>ID</th>
         <th>Product</th>
+        <th>X</th>
     </tr>
 
     <%
@@ -43,6 +52,9 @@ Cart: <br/>
         </td>
         <td>
             <%=productDto.getName()%>
+        </td>
+        <td>
+            <a href="removeproduct?productid=<%=productDto.getId()%>">X</a>
         </td>
     </tr>
     <%

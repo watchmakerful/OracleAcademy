@@ -12,22 +12,16 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 /**
- * Created by Алексей on 10.08.2016.
+ * Created by Алексей on 13.08.2016.
  */
-public class AddProductToCartServlet extends HttpServlet {
+public class RemoveProductFromCartServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         long userId = (Long)(session.getAttribute("user"));
         long productId = Long.parseLong(request.getParameter("productid"));
         UserService userService = UserServiceImpl.getInstance();
-        userService.addProductToCart(userId, productId);
-        PrintWriter out = response.getWriter();
-        out.println("<html>");
-        out.println("<body>");
-        out.println("<h3> Product added successfully. </h3>");
-        out.println("<meta http-equiv=\"refresh\" content=\"3;userinfo.jsp\">");
-        out.println("</body>");
-        out.println("</html>");
+        userService.removeProductFromCart(userId,productId);
+        response.sendRedirect("userinfo.jsp");
 
 
     }
