@@ -19,8 +19,7 @@
     if (!(sessionUser == null)) {
         username = (String) request.getSession().getAttribute("username");
 %>
-Hello, <a href="userinfo.jsp"><%=username%>
-</a>! <a href="logout">(logout)</a>
+Hello, <a href="userinfo.jsp"><%=username%></a>! <a href="logout">(logout)</a>
 <%
 } else {
 %>
