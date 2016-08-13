@@ -45,5 +45,14 @@
         <url-pattern>/newproduct</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>addproduct</servlet-name>
+        <servlet-class>com.alex.servlets.AddProductToCartServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>addproduct</servlet-name>
+        <url-pattern>/addproduct</url-pattern>
+    </servlet-mapping>
+
 
 </web-app>

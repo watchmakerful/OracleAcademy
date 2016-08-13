@@ -33,7 +33,7 @@ public class RegistrationServlet extends HttpServlet {
         }
         else
 
-        if (!userService.checkUserExists(username)) {
+        if (userService.checkUserExists(username)!=-1) {
 
             UserDto userDto = new UserDto();
             userDto.setName(name);

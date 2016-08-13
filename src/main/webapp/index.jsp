@@ -13,7 +13,7 @@
 <body>
 <h3>Main page</h3>
 <%
-    String sessionUser = (String) request.getSession().getAttribute("user");
+    Long sessionUser = (Long) request.getSession().getAttribute("user");
     if (!(sessionUser == null )){
 %>
     Hello, <%=sessionUser%>! <a href="logout">(logout)</a>

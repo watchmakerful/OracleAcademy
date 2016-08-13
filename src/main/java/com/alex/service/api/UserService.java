@@ -13,8 +13,8 @@ public interface UserService {
     UserDto getUserById (long id);
     void createUser (UserDto userDto);
     void deleteUser (long id);
-    boolean checkUserExists (String username, String password);
-    boolean checkUserExists (String username);
+    long checkUserExists (String username, String password);
+    long checkUserExists (String username);
     List<ProductDto> getCartById (long id);
     void addProductToCart (long userId, long productId);
     void removeProductFromCart (long userId, long productId);

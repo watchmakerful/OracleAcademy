@@ -65,20 +65,20 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean checkUserExists(String login, String password) {
+    public long checkUserExists(String login, String password) {
         List<User> users = userDao.findAll();
         for (User user: users ) {
-            if ((user.getLogin().equals(login)) && (user.getPassword().equals(password))) return true;
+            if ((user.getLogin().equals(login)) && (user.getPassword().equals(password))) return user.getId();
         }
-        return false;
+        return -1;
     }
 
-    public boolean checkUserExists(String login) {
+    public long checkUserExists(String login) {
         List<User> users = userDao.findAll();
         for (User user: users ) {
-            if (user.getLogin().equals(login)) return true;
+            if (user.getLogin().equals(login)) return user.getId();
         }
-        return false;
+        return -1;
     }
 
     @Override

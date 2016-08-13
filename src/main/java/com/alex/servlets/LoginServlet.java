@@ -25,18 +25,20 @@ public class LoginServlet extends HttpServlet {
         out.println("<html>");
         out.println("<body>");
         out.println("<h3>" + username + "</h3>");
-        if (userService.checkUserExists(username, password)) {
+        long userId = userService.checkUserExists(username, password);
+
+        if (userId!=-1) {
             out.println("Login successful!");
 
 
-            session.setAttribute("user", username);
+            session.setAttribute("user", userId);
 
             out.println("<a href=index.jsp>Return to main page</a>");
             out.println("<meta http-equiv=\"refresh\" content=\"3;index.jsp\">");
 
 
         } else {
-            if (userService.checkUserExists(username)) {
+            if (userService.checkUserExists(username)!=-1) {
                 out.println("Incorrect password, try again!");
             } else
                 out.println("Unknown user!");
