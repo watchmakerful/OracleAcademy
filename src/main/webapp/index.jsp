@@ -1,4 +1,5 @@
-<%--
+<%@ page import="com.alex.service.api.UserService" %>
+<%@ page import="com.alex.service.impl.UserServiceImpl" %><%--
   Created by IntelliJ IDEA.
   User: Алексей
   Date: 05.08.2016
@@ -13,10 +14,12 @@
 <body>
 <h3>Main page</h3>
 <%
+    String username = "";
     Long sessionUser = (Long) request.getSession().getAttribute("user");
     if (!(sessionUser == null )){
+        username = (String)request.getSession().getAttribute("username");
 %>
-    Hello, <%=sessionUser%>! <a href="logout">(logout)</a>
+    Hello, <%=username%>! <a href="logout">(logout)</a>
 <%}
     else
 {
