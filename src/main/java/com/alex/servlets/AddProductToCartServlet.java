@@ -17,8 +17,15 @@ import java.io.PrintWriter;
 public class AddProductToCartServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        long userId = (Long)(session.getAttribute("user"));
-        long productId = Long.parseLong(request.getParameter("productid"));
+
+        Long userId = (Long)(session.getAttribute("user"));
+        Long productId = Long.parseLong(request.getParameter("productid"));
+        if (userId == null) {
+            response.sendRedirect("login.html");
+            return;
+        }
+
+
         UserService userService = UserServiceImpl.getInstance();
         userService.addProductToCart(userId, productId);
         PrintWriter out = response.getWriter();
