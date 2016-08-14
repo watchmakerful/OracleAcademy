@@ -6,6 +6,7 @@ import com.alex.dao.impl.ProductDaoImpl;
 import com.alex.dao.impl.UserDaoImpl;
 import com.alex.entity.Role;
 import com.alex.entity.User;
+import com.alex.holder.PropertyHolder;
 import com.alex.service.api.UserService;
 import com.alex.service.impl.UserServiceImpl;
 import com.alex.utils.Transformer;
@@ -31,6 +32,8 @@ public class Main {
         System.out.println(Transformer.transformListUserDtoToListUser(userService.getAllUsers()));
 
         System.out.println(productDao.findAll());
+        PropertyHolder holder = PropertyHolder.getInstance();
+        System.out.println(holder.getProperty("DatabaseURL"));
 
     }
 }

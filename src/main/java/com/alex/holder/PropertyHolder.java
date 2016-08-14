@@ -9,7 +9,7 @@ import java.util.Properties;
  */
 public class PropertyHolder {
 
-    private String file = "src\\main\\webapp\\resources\\application.properties";
+    private String file = "WEB-INF/resources/application.properties";
     private Properties properties = new Properties();
 
     private PropertyHolder() {

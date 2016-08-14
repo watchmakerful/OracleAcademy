@@ -1,5 +1,6 @@
 <%@ page import="com.alex.service.api.UserService" %>
-<%@ page import="com.alex.service.impl.UserServiceImpl" %><%--
+<%@ page import="com.alex.service.impl.UserServiceImpl" %>
+<%@ page import="com.alex.holder.PropertyHolder" %><%--
   Created by IntelliJ IDEA.
   User: Алексей
   Date: 05.08.2016
@@ -12,6 +13,15 @@
     <title>Main page</title>
 </head>
 <body>
+<%=
+  request.getServletContext().getAttribute("URL")
+%>
+
+
+
+
+
+
 <h3>Main page</h3>
 <%
     String username = "";

@@ -75,6 +75,8 @@
     <listener>
         <listener-class>com.alex.servlets.CartCreatorListener</listener-class>
     </listener>
-
+    <listener>
+        <listener-class>com.alex.servlets.ContextListener</listener-class>
+    </listener>
 
 </web-app>

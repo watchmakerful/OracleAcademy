@@ -14,7 +14,11 @@
     <title>All products</title>
 </head>
 <body>
+    <a href="index.jsp">Main page</a> <a href="userinfo.jsp">User profile</a>
+
     <h3>All products</h3>
+
+
 
     <%
         ProductService productService = ProductServiceImpl.getInstance();
