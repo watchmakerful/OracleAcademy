@@ -1,9 +1,7 @@
-package com.alex.holder;
+package com.alex.holders;
 
 import com.alex.servlets.ContextListener;
 
-import java.io.File;
-import java.io.FileReader;
 import java.util.Properties;
 
 /**

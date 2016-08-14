@@ -1,6 +1,6 @@
 package com.alex.dbutil;
 
-import com.alex.holder.PropertyHolder;
+import com.alex.holders.PropertyHolder;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
 import java.sql.Connection;

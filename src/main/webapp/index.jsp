@@ -1,6 +1,6 @@
 <%@ page import="com.alex.service.api.UserService" %>
 <%@ page import="com.alex.service.impl.UserServiceImpl" %>
-<%@ page import="com.alex.holder.PropertyHolder" %><%--
+<%@ page import="com.alex.holders.PropertyHolder" %><%--
   Created by IntelliJ IDEA.
   User: Алексей
   Date: 05.08.2016
