@@ -2,10 +2,6 @@ package com.alex.servlets;
 
 
 import com.alex.dbutil.DatabaseCreator;
-import com.alex.dto.UserDto;
-import com.alex.entity.Role;
-import com.alex.service.api.UserService;
-import com.alex.service.impl.UserServiceImpl;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
