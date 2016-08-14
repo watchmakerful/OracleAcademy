@@ -25,12 +25,14 @@ public class RemoveProductFromCartServlet extends HttpServlet {
         long userId = (Long) (session.getAttribute("user"));
         long productId = Long.parseLong(request.getParameter("productid"));
 //
-        ProductService productService = ProductServiceImpl.getInstance();
-        Product currentProduct = Transformer.transformProductDtoToProduct(productService.getProductById(productId));
+//
         List<Product> cart = (List<Product>) session.getAttribute("cart");
         for (Product product : cart) {
-            if (product.getId() == currentProduct.getId()) {
-                cart.remove(product);
+            if (product.getId() == productId) {
+                if (product.getCount()>1)
+                    product.setCount(product.getCount()-1);
+                else
+                    cart.remove(product);
                 break;
             }
         }

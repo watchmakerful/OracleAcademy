@@ -43,6 +43,7 @@ Cart: <br/>
     <tr>
         <th>ID</th>
         <th>Product</th>
+        <th>Count</th>
         <th>X</th>
     </tr>
 
@@ -55,6 +56,9 @@ Cart: <br/>
         </td>
         <td>
             <%=productDto.getName()%>
+        </td>
+        <td>
+            <%=productDto.getCount()%>
         </td>
         <td>
             <%

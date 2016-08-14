@@ -24,7 +24,7 @@ public class AddProductToCartServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
 
-        Long userId = (Long)(session.getAttribute("user"));
+        Long userId = (Long) (session.getAttribute("user"));
         Long productId = Long.parseLong(request.getParameter("productid"));
         if (userId == null) {
             response.sendRedirect("login.html");
@@ -32,18 +32,36 @@ public class AddProductToCartServlet extends HttpServlet {
         }
 
 
-
         ProductService productService = ProductServiceImpl.getInstance();
         Product currentProduct = Transformer.transformProductDtoToProduct(productService.getProductById(productId));
         List<Product> cart = (List<Product>) session.getAttribute("cart");
-        cart.add(currentProduct);
-        session.setAttribute("cart",cart);
+        boolean productExists = false;
+        boolean added = true;
+        for (Product product : cart) {
+            if ((product.getId() == productId)) {
+                if (product.getCount() < currentProduct.getCount())
+                    product.setCount(product.getCount() + 1);
+                else added = false;
+                productExists = true;
+            }
+        }
+
+        if (!productExists) {
+            currentProduct.setCount(1);
+            cart.add(currentProduct);
+        }
+
+
+        session.setAttribute("cart", cart);
 
 
         PrintWriter out = response.getWriter();
         out.println("<html>");
         out.println("<body>");
-        out.println("<h3> Product added successfully. </h3>");
+        if (added)
+            out.println("<h3> Product added successfully. </h3>");
+        else
+            out.println("<h3> Can't add this product anymore. </h3>");
         out.println("<meta http-equiv=\"refresh\" content=\"3;userinfo.jsp\">");
         out.println("</body>");
         out.println("</html>");
