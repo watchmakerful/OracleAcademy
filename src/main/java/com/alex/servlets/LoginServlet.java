@@ -1,6 +1,7 @@
 package com.alex.servlets;
 
 
+import com.alex.entity.Role;
 import com.alex.service.api.UserService;
 import com.alex.service.impl.UserServiceImpl;
 
@@ -26,6 +27,7 @@ public class LoginServlet extends HttpServlet {
         out.println("<body>");
 
         long userId = userService.checkUserExists(username, password);
+        Role role = userService.getUserById(userId).getRole();
 
 
         if (userId!=-1) {
@@ -35,6 +37,7 @@ public class LoginServlet extends HttpServlet {
 
             session.setAttribute("user", userId);
             session.setAttribute("username", username);
+            session.setAttribute("role",role);
 
             out.println("<a href=index.jsp>Return to main page</a>");
             out.println("<meta http-equiv=\"refresh\" content=\"3;index.jsp\">");

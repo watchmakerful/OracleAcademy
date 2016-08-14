@@ -17,6 +17,7 @@ public class LogoutServlet extends HttpServlet {
         session.removeAttribute("user");
         session.removeAttribute("username");
         session.removeAttribute("cart");
+        session.removeAttribute("role");
         PrintWriter out = response.getWriter();
 
         out.println("<html>");

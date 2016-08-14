@@ -1,6 +1,7 @@
 <%@ page import="com.alex.service.api.UserService" %>
 <%@ page import="com.alex.service.impl.UserServiceImpl" %>
-<%@ page import="com.alex.holders.PropertyHolder" %><%--
+<%@ page import="com.alex.holders.PropertyHolder" %>
+<%@ page import="com.alex.entity.Role" %><%--
   Created by IntelliJ IDEA.
   User: Алексей
   Date: 05.08.2016
@@ -17,12 +18,13 @@
 <h3>Main page</h3>
 <%
     String username = "";
+    Role role;
     Long sessionUser = (Long) request.getSession().getAttribute("user");
     if (!(sessionUser == null)) {
         username = (String) request.getSession().getAttribute("username");
+        role = (Role) request.getSession().getAttribute("role");
 %>
-Hello, <a href="userinfo.jsp"><%=username%>
-</a>! <a href="logout">(logout)</a>
+Hello, <a href="userinfo.jsp"><%=username%></a>! <%=role%> <a href="logout">(logout)</a>
 <%
 } else {
 %>
