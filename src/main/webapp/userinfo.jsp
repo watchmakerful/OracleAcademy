@@ -2,7 +2,10 @@
 <%@ page import="com.alex.service.api.UserService" %>
 <%@ page import="com.alex.service.impl.UserServiceImpl" %>
 <%@ page import="com.alex.dto.ProductDto" %>
-<%@ page import="java.util.List" %><%--
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.LinkedList" %>
+<%@ page import="com.alex.entity.Product" %>
+<%@ page import="com.alex.utils.Transformer" %><%--
   Created by IntelliJ IDEA.
   User: Алексей
   Date: 04.08.2016
@@ -29,7 +32,7 @@
 
     UserService userService = UserServiceImpl.getInstance();
     UserDto userDto = userService.getUserById(id);
-    List<ProductDto> cart = userService.getCartById(id);
+    List<ProductDto> cart = Transformer.transformListProductToListProductDto((List<Product>)session.getAttribute("cart"));
 %>
 User #<%=id%>: <%=userDto.getLogin()%> <br/>
 Name: <%=userDto.getName()%> <br/>

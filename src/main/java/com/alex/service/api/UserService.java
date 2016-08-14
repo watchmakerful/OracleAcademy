@@ -15,8 +15,6 @@ public interface UserService {
     void deleteUser (long id);
     long checkUserExists (String username, String password);
     long checkUserExists (String username);
-    List<ProductDto> getCartById (long id);
-    void addProductToCart (long userId, long productId);
-    void removeProductFromCart (long userId, long productId);
+
 
 }

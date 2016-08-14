@@ -72,5 +72,9 @@
         <url-pattern>/deleteproduct</url-pattern>
     </servlet-mapping>
 
+    <listener>
+        <listener-class>com.alex.servlets.CartCreatorListener</listener-class>
+    </listener>
+
 
 </web-app>

@@ -1,7 +1,12 @@
 package com.alex.servlets;
 
+import com.alex.dto.ProductDto;
+import com.alex.entity.Product;
+import com.alex.service.api.ProductService;
 import com.alex.service.api.UserService;
+import com.alex.service.impl.ProductServiceImpl;
 import com.alex.service.impl.UserServiceImpl;
+import com.alex.utils.Transformer;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -10,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 /**
  * Created by Алексей on 10.08.2016.
@@ -26,8 +32,14 @@ public class AddProductToCartServlet extends HttpServlet {
         }
 
 
-        UserService userService = UserServiceImpl.getInstance();
-        userService.addProductToCart(userId, productId);
+
+        ProductService productService = ProductServiceImpl.getInstance();
+        Product currentProduct = Transformer.transformProductDtoToProduct(productService.getProductById(productId));
+        List<Product> cart = (List<Product>) session.getAttribute("cart");
+        cart.add(currentProduct);
+        session.setAttribute("cart",cart);
+
+
         PrintWriter out = response.getWriter();
         out.println("<html>");
         out.println("<body>");

@@ -31,8 +31,6 @@ public class Main {
         System.out.println(Transformer.transformListUserDtoToListUser(userService.getAllUsers()));
 
         System.out.println(productDao.findAll());
-        userDao.addProductToCart(6,1);
-        userDao.addProductToCart(6,1);
-        System.out.println(userDao.getCart(6));
+
     }
 }

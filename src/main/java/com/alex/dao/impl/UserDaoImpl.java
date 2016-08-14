@@ -21,9 +21,7 @@ public class UserDaoImpl implements UserDao {
     private static final String SELECT_USER_BY_ID = "SELECT * FROM users WHERE id = ?";
     private static final String DELETE_USER = "DELETE FROM users WHERE id = ?";
     private static final String CREATE_NEW_USER = "INSERT INTO users (id, name, name2, age, login, password, email, address, role) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-    private static final String GET_CART_BY_ID = "SELECT * FROM carts INNER JOIN products ON carts.productid = products.id WHERE userid = ?";
-    private static final String ADD_PRODUCT_TO_CART = "INSERT INTO carts (userid, productid) VALUES (?, ?)";
-    private static final String REMOVE_PRODUCT_FROM_CART = "DELETE FROM carts WHERE userid = ? AND productid = ?";
+
 
     private UserDaoImpl() {
         dataSource = DataSource.getInstance();
@@ -178,86 +176,5 @@ public class UserDaoImpl implements UserDao {
         }
     }
 
-    @Override
-    public List<Product> getCart(long id) {
-        Connection connection = dataSource.getConnection();
-        List<Product> cart = new LinkedList<>();
-        try {
-            PreparedStatement ps = connection.prepareStatement(GET_CART_BY_ID);
-            ps.setLong(1, id);
-            ResultSet resultSet = ps.executeQuery();
 
-            while (resultSet.next()) {
-                Product product = new Product();
-                product.setId(resultSet.getLong("productid"));
-                product.setName(resultSet.getString("name"));
-                product.setCount(resultSet.getInt("count"));
-                product.setDescription(resultSet.getString("description"));
-                product.setMade(resultSet.getString("made"));
-                product.setPrice(resultSet.getDouble("price"));
-                cart.add(product);
-
-            }
-
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                if (connection != null)
-                    connection.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-
-
-        return cart;
-    }
-
-    @Override
-    public void addProductToCart(long userId, long productId) {
-        Connection connection = dataSource.getConnection();
-
-        try {
-            PreparedStatement ps = connection.prepareStatement(ADD_PRODUCT_TO_CART);
-            ps.setLong(1, userId);
-            ps.setLong(2, productId);
-            ps.executeUpdate();
-
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                if (connection != null)
-                    connection.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    @Override
-    public void removeProductFromCart(long userId, long productId) {
-        Connection connection = dataSource.getConnection();
-
-        try {
-            PreparedStatement ps = connection.prepareStatement(REMOVE_PRODUCT_FROM_CART);
-            ps.setLong(1, userId);
-            ps.setLong(2, productId);
-            ps.executeUpdate();
-
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                if (connection != null)
-                    connection.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-    }
 }

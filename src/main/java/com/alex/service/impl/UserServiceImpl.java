@@ -1,6 +1,7 @@
 package com.alex.service.impl;
 
 import com.alex.dto.ProductDto;
+import com.alex.entity.Product;
 import com.alex.utils.Transformer;
 import com.alex.dao.api.UserDao;
 import com.alex.dao.impl.UserDaoImpl;
@@ -8,6 +9,7 @@ import com.alex.dto.UserDto;
 import com.alex.entity.User;
 import com.alex.service.api.UserService;
 
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -81,19 +83,5 @@ public class UserServiceImpl implements UserService {
         return -1;
     }
 
-    @Override
-    public List<ProductDto> getCartById(long id) {
-        List<ProductDto> cartProductDtos = Transformer.transformListProductToListProductDto(userDao.getCart(id));
-        return cartProductDtos;
-    }
 
-    @Override
-    public void addProductToCart(long userId, long productId) {
-        userDao.addProductToCart(userId,productId);
-    }
-
-    @Override
-    public void removeProductFromCart(long userId, long productId) {
-        userDao.removeProductFromCart(userId,productId);
-    }
 }

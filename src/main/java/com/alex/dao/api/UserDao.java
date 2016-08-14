@@ -13,8 +13,6 @@ public interface UserDao {
     User findById (long id);
     void delete (long id);
     void create (User user);
-    List<Product> getCart (long id); //?
-    void addProductToCart (long userId, long productId);
-    void removeProductFromCart (long userId, long productId);
+
 
 }
