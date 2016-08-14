@@ -1,5 +1,6 @@
 package com.alex.dbutil;
 
+import com.alex.holder.PropertyHolder;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
 import java.sql.Connection;
@@ -29,14 +30,16 @@ public class DataSource {
         Connection conn = null;
         try {
             //todo application.properties
-            cpds.setDriverClass("com.mysql.jdbc.Driver"); //loads the jdbc driver
-            cpds.setJdbcUrl("jdbc:mysql://localhost:3306/test?serverTimezone=UTC");
-            cpds.setUser("root");
-            cpds.setPassword("test");
+            PropertyHolder holder = PropertyHolder.getInstance();
+
+            cpds.setDriverClass(holder.getProperty("DatabaseDriver")); //loads the jdbc driver
+            cpds.setJdbcUrl(holder.getProperty("DatabaseURL"));
+            cpds.setUser(holder.getProperty("DatabaseUser"));
+            cpds.setPassword(holder.getProperty("DatabasePassword"));
 
             cpds.setMinPoolSize(5);
             cpds.setAcquireIncrement(10);
-            cpds.setMaxPoolSize(50);
+            cpds.setMaxPoolSize(200);
 
             conn = cpds.getConnection();
         } catch (Exception e) {

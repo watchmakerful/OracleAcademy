@@ -13,14 +13,6 @@
     <title>Main page</title>
 </head>
 <body>
-<%=
-  request.getServletContext().getAttribute("URL")
-%>
-
-
-
-
-
 
 <h3>Main page</h3>
 <%
@@ -29,7 +21,8 @@
     if (!(sessionUser == null)) {
         username = (String) request.getSession().getAttribute("username");
 %>
-Hello, <a href="userinfo.jsp"><%=username%></a>! <a href="logout">(logout)</a>
+Hello, <a href="userinfo.jsp"><%=username%>
+</a>! <a href="logout">(logout)</a>
 <%
 } else {
 %>

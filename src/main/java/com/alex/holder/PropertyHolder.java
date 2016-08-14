@@ -1,5 +1,7 @@
 package com.alex.holder;
 
+import com.alex.servlets.ContextListener;
+
 import java.io.File;
 import java.io.FileReader;
 import java.util.Properties;
@@ -13,11 +15,7 @@ public class PropertyHolder {
     private Properties properties = new Properties();
 
     private PropertyHolder() {
-        try {
-            properties.load(new FileReader(new File(file)));
-        } catch (java.io.IOException e) {
-            System.out.println("File read error!");
-        }
+        properties = ContextListener.getProperties();
     }
 
 
