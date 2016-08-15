@@ -21,6 +21,9 @@ public class RegistrationServlet extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String name = request.getParameter("name");
+        String name2 = request.getParameter("name2");
+        String email = request.getParameter("email");
+        String address = request.getParameter("address");
         int age = Integer.parseInt(request.getParameter("age"));
         PrintWriter out = response.getWriter();
 
@@ -40,6 +43,9 @@ public class RegistrationServlet extends HttpServlet {
             userDto.setLogin(username);
             userDto.setPassword(password);
             userDto.setAge(age);
+            userDto.setSecondName(name2);
+            userDto.setAddress(address);
+            userDto.setEmail(email);
             userDto.setRole(Role.USER);
             userService.createUser(userDto);
 

@@ -1,5 +1,7 @@
 package com.alex.servlets;
 
+import com.alex.entity.Product;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -7,6 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Created by Алексей on 05.08.2016.
@@ -16,7 +20,8 @@ public class LogoutServlet extends HttpServlet {
         HttpSession session = request.getSession();
         session.removeAttribute("user");
         session.removeAttribute("username");
-        session.removeAttribute("cart");
+        List<Product> cart = new LinkedList<>();
+        session.setAttribute("cart",cart);
         session.removeAttribute("role");
         PrintWriter out = response.getWriter();
 

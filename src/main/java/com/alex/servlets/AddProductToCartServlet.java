@@ -62,7 +62,7 @@ public class AddProductToCartServlet extends HttpServlet {
             out.println("<h3> Product added successfully. </h3>");
         else
             out.println("<h3> Can't add this product anymore. </h3>");
-        out.println("<meta http-equiv=\"refresh\" content=\"2;products.jsp\">");
+        out.println("<meta http-equiv=\"refresh\" content=\"2;index.jsp\">");
         out.println("</body>");
         out.println("</html>");
 

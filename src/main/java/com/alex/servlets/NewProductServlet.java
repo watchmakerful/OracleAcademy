@@ -38,7 +38,7 @@ public class NewProductServlet extends HttpServlet {
         out.println("<html>");
         out.println("<body>");
         out.println("<h3> Product created successfully. </h3>");
-        out.println("<meta http-equiv=\"refresh\" content=\"3;index.jsp\">");
+        out.println("<meta http-equiv=\"refresh\" content=\"3;admin.jsp\">");
         out.println("</body>");
         out.println("</html>");
 

@@ -72,6 +72,15 @@
         <url-pattern>/deleteproduct</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>deleteuser</servlet-name>
+        <servlet-class>com.alex.servlets.DeleteUserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>deleteuser</servlet-name>
+        <url-pattern>/deleteuser</url-pattern>
+    </servlet-mapping>
+
     <listener>
         <listener-class>com.alex.servlets.CartCreatorListener</listener-class>
     </listener>

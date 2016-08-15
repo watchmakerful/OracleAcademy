@@ -13,7 +13,7 @@
     <title>Product info</title>
 </head>
 <body>
-<a href="index.jsp">Main page</a> <a href="products.jsp">All products</a> <br/>
+<a href="index.jsp">Main page</a> <a href="admin.jsp">All products</a> <br/>
 <%
     long id = Long.parseLong(request.getParameter("id"));
     ProductService productService = ProductServiceImpl.getInstance();

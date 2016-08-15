@@ -27,53 +27,21 @@
     } else if (session.getAttribute("user") != null) {
         id = (Long) session.getAttribute("user");
     } else
-        response.sendRedirect("/login.html");
+        response.sendRedirect("login.html");
 
 
     UserService userService = UserServiceImpl.getInstance();
     UserDto userDto = userService.getUserById(id);
-    List<ProductDto> cart = Transformer.transformListProductToListProductDto((List<Product>)session.getAttribute("cart"));
+
 %>
 User #<%=id%>: <%=userDto.getLogin()%> <br/>
 Name: <%=userDto.getName()%> <br/>
+Second name: <%=userDto.getSecondName()%> <br/>
 Age: <%=userDto.getAge()%> <br/>
+Email: <%=userDto.getEmail()%> <br/>
+Address: <%=userDto.getAddress()%> <br/>
 
-Cart: <br/>
-<table border="1">
-    <tr>
-        <th>ID</th>
-        <th>Product</th>
-        <th>Count</th>
-        <th>X</th>
-    </tr>
 
-    <%
-        for (ProductDto productDto : cart) {
-    %>
-    <tr>
-        <td>
-            <%=productDto.getId()%>
-        </td>
-        <td>
-            <%=productDto.getName()%>
-        </td>
-        <td>
-            <%=productDto.getCount()%>
-        </td>
-        <td>
-            <%
-                if (id == (Long) session.getAttribute("user")) {
-            %>
-            <a href="removeproduct?productid=<%=productDto.getId()%>">X</a>
-            <%
-                }
-            %>
-        </td>
-    </tr>
-    <%
-        }
-    %>
-</table>
 
 
 </body>

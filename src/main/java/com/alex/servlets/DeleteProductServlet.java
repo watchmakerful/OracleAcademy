@@ -30,7 +30,7 @@ public class DeleteProductServlet extends HttpServlet {
 
         ProductService productService = ProductServiceImpl.getInstance();
         productService.deleteProduct(productId);
-        response.sendRedirect("products.jsp");
+        response.sendRedirect("admin.jsp");
 
 
     }
